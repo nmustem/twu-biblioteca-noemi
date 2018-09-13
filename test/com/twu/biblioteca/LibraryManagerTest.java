@@ -35,4 +35,16 @@ public class LibraryManagerTest {
     public void failedCheckoutBookTest() {
         assertFalse(libraryManager.checkoutBook(13, booksList));
     }
+
+    @Test
+    public void successfulCheckoutBookTestListSizeDecreased() {
+        libraryManager.checkoutBook(1, booksList);
+        assertEquals(1, booksList.size());
+    }
+
+    @Test
+    public void failedCheckoutBookTestSameListSize() {
+        libraryManager.checkoutBook(13, booksList);
+        assertEquals(2, booksList.size());
+    }
 }
