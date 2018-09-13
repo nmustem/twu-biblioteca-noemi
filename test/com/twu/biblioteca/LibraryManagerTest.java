@@ -1,11 +1,9 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.dto.Book;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,14 +35,21 @@ public class LibraryManagerTest {
     }
 
     @Test
-    public void successfulCheckoutBookTestListSizeDecreased() {
+    public void successfulCheckoutBookTest_BookIsRented() {
         libraryManager.checkoutBook(1, booksList);
-        assertEquals(1, booksList.size());
+
+        assertTrue(booksList.get(0).isRented());
     }
 
     @Test
-    public void failedCheckoutBookTestSameListSize() {
+    public void failedCheckoutBookTest_SameBooksAreStillAvailable() {
+        List<Book> booksListBackup = new ArrayList<Book>();
+        for(int i = 0; i < booksList.size(); i++){
+            booksListBackup.add(new Book(booksList.get(i).getId(), booksList.get(i).getTitle(), booksList.get(i).getAuthor(), booksList.get(i).getYear(), booksList.get(i).isRented()));
+        }
+
         libraryManager.checkoutBook(13, booksList);
-        assertEquals(2, booksList.size());
+
+        assertEquals(booksList, booksListBackup);
     }
 }
