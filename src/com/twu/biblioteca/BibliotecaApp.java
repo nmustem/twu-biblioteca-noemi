@@ -23,6 +23,9 @@ public class BibliotecaApp {
     private static void showTheAvailableBooksList() {
         booksList = bibliotecaUtils.fillBooksList();
 
+        System.out.printf("| %5s | %-30s | %-30s | %4s | %5s|", "Id", "Title", "Author", "Year", "Rented");
+        System.out.println("\n------------------------------------------------------------------------------------------");
+
         for(Book book : booksList){
             if(!book.isRented()){
                 System.out.println(book.toString());
