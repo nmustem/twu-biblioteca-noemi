@@ -25,8 +25,8 @@ public class BibliotecaAppTest {
 
     @Test
     public void test() {
-        BibliotecaApp.main(new String[0]);
-        assertEquals("Welcome to the Bangalore Public Library. The Biblioteca is available to use it!\n", outContent.toString());
+        BibliotecaApp.welcome();
+        assertEquals("Welcome to the Bangalore Public Library. The Biblioteca is available to use it!\n\n", outContent.toString());
     }
 
 }

@@ -1,8 +1,33 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.dto.Book;
+import com.twu.biblioteca.utils.BibliotecaUtils;
+
+import java.util.List;
+
 public class BibliotecaApp {
 
+    private static BibliotecaUtils bibliotecaUtils = new BibliotecaUtils();
+    private static List<Book> booksList;
+
     public static void main(String[] args) {
-        System.out.println("Welcome to the Bangalore Public Library. The Biblioteca is available to use it!");
+        welcome();
+
+        showTheAvailableBooksList();
+    }
+
+    static void welcome() {
+        System.out.println("Welcome to the Bangalore Public Library. The Biblioteca is available to use it!\n");
+    }
+
+    private static void showTheAvailableBooksList() {
+        booksList = bibliotecaUtils.fillBooksList();
+
+        for(Book book : booksList){
+            if(!book.isRented()){
+                System.out.println(book.toString());
+            }
+
+        }
     }
 }
