@@ -44,8 +44,8 @@ public class LibraryManagerTest {
     @Test
     public void failedCheckoutBookTest_SameBooksAreStillAvailable() {
         List<Book> booksListBackup = new ArrayList<Book>();
-        for(int i = 0; i < booksList.size(); i++){
-            booksListBackup.add(new Book(booksList.get(i).getId(), booksList.get(i).getTitle(), booksList.get(i).getAuthor(), booksList.get(i).getYear(), booksList.get(i).isRented()));
+        for (Book book : booksList) {
+            booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), book.isRented()));
         }
 
         libraryManager.checkoutBook(13, booksList);
