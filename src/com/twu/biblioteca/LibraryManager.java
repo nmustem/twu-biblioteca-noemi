@@ -25,6 +25,7 @@ public class LibraryManager {
     public Boolean returnBook(int bookId, List<Book> booksList) {
         for (Book book : booksList) {
             if (bookId == book.getId() && book.isRented()) {
+                book.setRented(false);
                 return true;
             }
         }
