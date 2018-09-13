@@ -7,6 +7,11 @@ import java.util.List;
 public class LibraryManager {
 
     public Boolean checkoutBook(int bookId, List<Book> booksList) {
-        return null;
+        for(Book book: booksList){
+            if(bookId == book.getId()){
+                return true;
+            }
+        }
+        return false;
     }
 }
