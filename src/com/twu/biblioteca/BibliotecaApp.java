@@ -14,6 +14,7 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         welcome();
         showMainMenu();
+
         showTheAvailableBooksList();
     }
 
@@ -27,7 +28,9 @@ public class BibliotecaApp {
 
         System.out.println("What do you want to do? (Choose one menu option by typing the number)");
         System.out.println("\t 1 - List Books");
-        System.out.println("\t 2 - Quit");
+        System.out.println("\t 2 - Checkout Book");
+        System.out.println("\t 3 - Return Book");
+        System.out.println("\t 4 - Quit");
 
         do {
             System.out.print("\nSelect an existing menu option: ");
@@ -35,7 +38,7 @@ public class BibliotecaApp {
                 String input = scanner.next();
                 System.out.printf("\n \"%s\" is not a valid number. Enter again please: ", input);
             }
-        } while ((menuOption=scanner.nextInt()) < 1 || menuOption > 2);
+        } while ((menuOption=scanner.nextInt()) < 1 || menuOption > 4);
 
         return menuOption;
     }
