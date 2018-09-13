@@ -44,7 +44,7 @@ public class LibraryManagerTest {
     }
 
     @Test
-    public void failedCheckoutBookTest_SameBooksAreStillAvailable() {
+    public void failedCheckoutBookTest_checksTheListElements() {
         List<Book> booksListBackup = new ArrayList<Book>();
         for (Book book : booksList) {
             booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), book.isRented()));
@@ -74,4 +74,31 @@ public class LibraryManagerTest {
         assertFalse(libraryManager.returnBook(13, booksList));
     }
 
+    @Test
+    public void successfulReturnBookTest_BookIsReturned() {
+        libraryManager.returnBook(3, booksList);
+
+        assertFalse(booksList.get(2).isRented());
+    }
+
+    @Test
+    public void failedReturnBookTest_checksTheListElements() {
+        List<Book> booksListBackup = new ArrayList<Book>();
+        for (Book book : booksList) {
+            booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), book.isRented()));
+        }
+
+        libraryManager.returnBook(13, booksList);
+
+        assertEquals(booksList, booksListBackup);
+    }
+
+    @Test
+    public void failedReturnBookTest_bookIsAlreadyRented() {
+        //someone returns a book with bookId = 3
+        libraryManager.returnBook(3, booksList);
+
+        //someone tries to returns a book that is already returned
+        assertFalse(libraryManager.returnBook(3, booksList));
+    }
 }
