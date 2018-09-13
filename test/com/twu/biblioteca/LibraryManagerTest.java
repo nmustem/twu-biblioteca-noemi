@@ -19,9 +19,11 @@ public class LibraryManagerTest {
         this.booksList = new ArrayList<Book>();
         Book book1 = new Book(1, "Book 1", "Autor1", 1990, false);
         Book book2 = new Book(2, "Book 2", "Autor2", 1991, false);
+        Book book3 = new Book(3, "Book 3", "Autor3", 1992, true);
 
         booksList.add(book1);
         booksList.add(book2);
+        booksList.add(book3);
     }
 
     @Test
@@ -61,4 +63,15 @@ public class LibraryManagerTest {
         //someone tries to rent a book that is already rented
         assertFalse(libraryManager.checkoutBook(1, booksList));
     }
+
+    @Test
+    public void successfulReturnBookTest() {
+        assertTrue(libraryManager.returnBook(3, booksList));
+    }
+
+    @Test
+    public void failedReturnBookTest() {
+        assertFalse(libraryManager.returnBook(13, booksList));
+    }
+
 }
