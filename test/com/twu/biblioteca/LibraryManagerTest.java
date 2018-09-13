@@ -52,4 +52,13 @@ public class LibraryManagerTest {
 
         assertEquals(booksList, booksListBackup);
     }
+
+    @Test
+    public void failedCheckoutBookTest_bookIsAlreadyRented() {
+        //someone rents a book with bookId = 1
+        libraryManager.checkoutBook(1, booksList);
+
+        //someone tries to rent a book that is already rented
+        assertFalse(libraryManager.checkoutBook(1, booksList));
+    }
 }
