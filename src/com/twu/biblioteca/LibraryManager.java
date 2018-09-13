@@ -12,9 +12,9 @@ public class LibraryManager {
      * @return true if it has been possible to checkout, false if not
      */
     public Boolean checkoutBook(int bookId, List<Book> booksList) {
-        for(int i = 0; i < booksList.size(); i++){
-            if(bookId == booksList.get(i).getId()){
-                booksList.get(i).setRented(true);
+        for (Book book : booksList) {
+            if (bookId == book.getId() && !book.isRented()) {
+                book.setRented(true);
                 return true;
             }
         }
