@@ -15,7 +15,7 @@ public class LibraryManagerTest {
     private  List<Book> booksList;
 
     @Before
-    public void setUpStreams() {
+    public void fillTheBooksList() {
         this.booksList = new ArrayList<Book>();
         Book book1 = new Book(1, "Book 1", "Autor1", 1990, false);
         Book book2 = new Book(2, "Book 2", "Autor2", 1991, false);

@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.dto.Book;
 import com.twu.biblioteca.utils.BibliotecaUtils;
+import com.twu.biblioteca.utils.BiblotecaConstants;
 
 import java.util.List;
 import java.util.Scanner;
@@ -18,44 +19,42 @@ public class BibliotecaApp {
     }
 
     static void welcome() {
-        System.out.println("Welcome to the Bangalore Public Library. The Biblioteca is available to use it!\n");
+        System.out.println(BiblotecaConstants.WELCOME_MESSAGE + "\n");
     }
 
     private static Integer showMainMenu() {
         Scanner scanner = new Scanner(System.in);
-        int menuOption;
+        int optionChosen;
 
-        System.out.println("What do you want to do? (Choose one menu option by typing the number)");
-        System.out.println("\t 1 - List Books");
-        System.out.println("\t 2 - Checkout Book");
-        System.out.println("\t 3 - Return Book");
-        System.out.println("\t 4 - Quit");
+        System.out.println(BiblotecaConstants.WHAT_TO_DO);
+        for(String option : BiblotecaConstants.MENU_OPTIONS){
+            System.out.println("\t " + option);
+        }
 
         do {
-            System.out.print("\nSelect an existing menu option: ");
+            System.out.print("\n" + BiblotecaConstants.CHOOSE_MENU_OPTION);
             while (!scanner.hasNextInt()) {
                 String input = scanner.next();
-                System.out.printf("\n \"%s\" is not a valid number. Enter again please: ", input);
+                System.out.printf("\n " + BiblotecaConstants.INVALID_NUMBER, input);
             }
-        } while ((menuOption=scanner.nextInt()) < 1 || menuOption > 4);
+        } while ((optionChosen=scanner.nextInt()) < BiblotecaConstants.MINIMUM_MENU_SIZE  || optionChosen > BiblotecaConstants.MENU_OPTIONS.size());
 
-        return menuOption;
+        return optionChosen;
     }
 
     private static void showTheAvailableBooksList() {
-        System.out.println("\n__BOOKS LIST__\n");
-        System.out.printf("| %5s | %-30s | %-30s | %4s | %5s|", "Id", "Title", "Author", "Year", "Rented");
-        System.out.println("\n------------------------------------------------------------------------------------------");
+        System.out.println("\n" + BiblotecaConstants.BOOKS_LIST + "\n");
+        System.out.println(BiblotecaConstants.BOOKS_LIST_HEADER);
+        System.out.println(BiblotecaConstants.SEPARATOR);
 
         for(Book book : booksList){
             if(!book.isRented()){
                 System.out.println(book.toString());
             }
-
         }
     }
 
-    static void manageUserActions(Integer integer) {
+    private static void manageUserActions(Integer integer) {
         switch (integer){
             case 1:
                 showTheAvailableBooksList();
@@ -75,38 +74,38 @@ public class BibliotecaApp {
     }
 
     private static void initTheCheckoutBookProcess() {
-        System.out.println("\n__CHECKOUT BOOK__\n");
+        System.out.println("\n" + BiblotecaConstants.CHECKOUT_BOOK + "\n");
 
         if(libraryManager.checkoutBook(askBookId(), booksList)){
-            System.out.println("Thank you! Enjoy the book.\n");
+            System.out.println(BiblotecaConstants.ENJOY_BOOK_MESSAGE + "\n");
         }else{
-            System.out.println("That book is not available.\n");
+            System.out.println(BiblotecaConstants.BOOK_NOT_AVAILABLE_MESSAGE + "\n");
         }
     }
 
     private static void initTheReturnBookProcess() {
-        System.out.println("\n__RETURN BOOK__\n");
+        System.out.println("\n" + BiblotecaConstants.RETURN_BOOK + "\n");
 
         if(libraryManager.returnBook(askBookId(), booksList)){
-            System.out.println("Thank you for returning the book.\n");
+            System.out.println(BiblotecaConstants.SUCCESSFUL_BOOK_RETURNED_MESSAGE + "\n");
         }else{
-            System.out.println("That is not a valid book to return.\n");
+            System.out.println(BiblotecaConstants.INVALID_RETURN_BOOK_MESSAGE + "\n");
         }
     }
 
     private static int askBookId() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Type the book id: ");
+        System.out.print(BiblotecaConstants.TYPE_BOOK_ID_MESSAGE);
 
         while (!scanner.hasNextInt()) {
-                String input = scanner.next();
-                System.out.printf("\n \"%s\" is not a valid number. Enter again please: ", input);
-            }
+            String input = scanner.next();
+            System.out.printf("\n " + BiblotecaConstants.INVALID_NUMBER, input);
+        }
         return scanner.nextInt();
     }
 
     private static void quit() {
-        System.out.println("\n__QUIT__\n");
-        System.out.println("Thanks for using the BibloitecaApp. See you soon!");
+        System.out.println("\n" + BiblotecaConstants.QUIT + "\n");
+        System.out.println(BiblotecaConstants.BYE_MESSAGE);
     }
 }
