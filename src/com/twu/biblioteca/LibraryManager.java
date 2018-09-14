@@ -1,52 +1,40 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.dto.Book;
+import com.twu.biblioteca.dto.LibraryProduct;
 import com.twu.biblioteca.dto.Movie;
 
 import java.util.List;
 
 public class LibraryManager {
-
     /**
-     * Checks if there is a book with id=bookId inside the given list, if so, the rented flag of this book is updated
-     * @param bookId the book id to checkout
-     * @param booksList the current available books list
+     * Checks if there is a product with id=productId inside the given list, if so, the rented flag of this product is updated
+     * @param productId the product id to checkout
+     * @param productsList the current available products list
      * @return true if it has been possible to checkout, false if not
      */
-    public Boolean checkoutBook(int bookId, List<Book> booksList) {
-        for (Book book : booksList) {
-            if (bookId == book.getId() && !book.isRented()) {
-                book.setRented(true);
+    public Boolean checkoutProduct(int productId, List<? extends LibraryProduct> productsList) {
+        for (LibraryProduct libraryProduct : productsList) {
+            if (productId == libraryProduct.getId() && !libraryProduct.isRented()) {
+                if(libraryProduct instanceof Book){
+                    ((Book) libraryProduct).setRented(true);
+                }else if(libraryProduct instanceof Movie){
+                    ((Movie) libraryProduct).setRented(true);
+                }
                 return true;
             }
         }
         return false;
     }
 
-    public Boolean returnBook(int bookId, List<Book> booksList) {
-        for (Book book : booksList) {
-            if (bookId == book.getId() && book.isRented()) {
-                book.setRented(false);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Boolean checkoutMovie(int movieId, List<Movie> moviesList) {
-        for (Movie movie : moviesList) {
-            if (movieId == movie.getId() && !movie.isRented()) {
-                movie.setRented(true);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Boolean returnMovie(int movieId, List<Movie> moviesList) {
-        for (Movie movie : moviesList) {
-            if (movieId == movie.getId() && movie.isRented()) {
-                movie.setRented(false);
+    public Boolean returnProduct(int productId, List<? extends LibraryProduct> productsList) {
+        for (LibraryProduct libraryProduct : productsList) {
+            if (productId == libraryProduct.getId() && libraryProduct.isRented()) {
+                if(libraryProduct instanceof Book){
+                    ((Book) libraryProduct).setRented(false);
+                }else if(libraryProduct instanceof Movie){
+                    ((Movie) libraryProduct).setRented(false);
+                }
                 return true;
             }
         }

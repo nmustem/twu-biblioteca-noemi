@@ -1,8 +1,6 @@
 package com.twu.biblioteca.dto;
 
-public class Movie {
-    private Integer id;
-
+public class Movie extends LibraryProduct{
     private String title;
 
     private String director;
@@ -11,15 +9,12 @@ public class Movie {
 
     private int rating; // 0 means unrated
 
-    private boolean rented;
-
     public Movie(Integer id, String title, String director, int year, int rating, boolean rented) {
-        this.id = id;
+        super(id, rented);
         this.title = title;
         this.director = director;
         this.year = year;
         this.rating = rating;
-        this.rented = rented;
     }
 
     public Integer getId() {
@@ -60,14 +55,6 @@ public class Movie {
 
     public void setRating(int rating) {
         this.rating = rating;
-    }
-
-    public boolean isRented() {
-        return this.rented;
-    }
-
-    public void setRented(boolean rented) {
-        this.rented = rented;
     }
 
     @Override

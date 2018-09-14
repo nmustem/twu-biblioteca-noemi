@@ -104,7 +104,7 @@ public class BibliotecaApp {
     private static void initTheCheckoutBookProcess() {
         System.out.println("\n" + BiblotecaConstants.CHECKOUT_BOOK + "\n");
 
-        if (libraryManager.checkoutBook(askBookId(), booksList)) {
+        if (libraryManager.checkoutProduct(askBookId(), booksList)) {
             System.out.println(BiblotecaConstants.ENJOY_BOOK_MESSAGE + "\n");
         } else {
             System.out.println(BiblotecaConstants.BOOK_NOT_AVAILABLE_MESSAGE + "\n");
@@ -114,7 +114,7 @@ public class BibliotecaApp {
     private static void initTheReturnBookProcess() {
         System.out.println("\n" + BiblotecaConstants.RETURN_BOOK + "\n");
 
-        if (libraryManager.returnBook(askBookId(), booksList)) {
+        if (libraryManager.returnProduct(askBookId(), booksList)) {
             System.out.println(BiblotecaConstants.SUCCESSFUL_BOOK_RETURNED_MESSAGE + "\n");
         } else {
             System.out.println(BiblotecaConstants.INVALID_RETURN_BOOK_MESSAGE + "\n");

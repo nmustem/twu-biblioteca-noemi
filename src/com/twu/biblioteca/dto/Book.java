@@ -1,33 +1,17 @@
 package com.twu.biblioteca.dto;
 
-public class Book {
-    private Integer id;
-
+public class Book extends LibraryProduct{
     private String title;
 
     private String author;
 
     private int year;
 
-    private boolean rented;
-
-    public Book() {
-    }
-
     public Book(Integer id, String title, String author, int year, boolean rented) {
-        this.id = id;
+        super(id, rented);
         this.title = title;
         this.author = author;
         this.year = year;
-        this.rented = rented;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -52,14 +36,6 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public boolean isRented() {
-        return rented;
-    }
-
-    public void setRented(boolean rented) {
-        this.rented = rented;
     }
 
     @Override
