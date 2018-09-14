@@ -46,17 +46,18 @@ public class BibliotecaApp {
     private static void showTheAvailableBooksList() {
         System.out.println("\n" + BiblotecaConstants.BOOKS_LIST + "\n");
         System.out.println(BiblotecaConstants.BOOKS_LIST_HEADER);
-        System.out.println(BiblotecaConstants.SEPARATOR);
+        System.out.println(BiblotecaConstants.BOOK_SEPARATOR);
 
         for (Book book : booksList) {
             if (!book.isRented()) {
                 System.out.println(book.toString());
             }
         }
-        System.out.println(BiblotecaConstants.SEPARATOR);
+        System.out.println(BiblotecaConstants.BOOK_SEPARATOR);
     }
 
     private static void manageUserActions(Integer integer) {
+        //FIXME new items added to the menu
         switch (integer) {
             case 1:
                 showTheAvailableBooksList();
@@ -74,7 +75,7 @@ public class BibliotecaApp {
             case -1:
                 quit();
                 break;
-            case 5:
+            case 5: //FIXME
                 manageUserActions(showMainMenu());
                 break;
             default:
@@ -97,7 +98,7 @@ public class BibliotecaApp {
         }
         System.out.println();
 
-        return optionChosen.equals(BiblotecaConstants.YES) ? 5 : -1;
+        return optionChosen.equals(BiblotecaConstants.YES) ? 5 : -1; //FIXME the 5 return value
     }
 
     private static void initTheCheckoutBookProcess() {
