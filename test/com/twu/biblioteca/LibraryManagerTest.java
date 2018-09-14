@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.dto.Book;
+import com.twu.biblioteca.dto.Movie;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +14,7 @@ public class LibraryManagerTest {
 
     private LibraryManager libraryManager = new LibraryManager();
     private  List<Book> booksList;
+    private  List<Movie> moviesList;
 
     @Before
     public void fillTheBooksList() {
@@ -24,6 +26,15 @@ public class LibraryManagerTest {
         booksList.add(book1);
         booksList.add(book2);
         booksList.add(book3);
+
+        this.moviesList = new ArrayList<Movie>();
+        Movie movie1 = new Movie(1, "Movie 1", "Director 1 ", 1990, 0,false);
+        Movie movie2 = new Movie(2, "Movie 2", "Director 2", 1991, 4, false);
+        Movie movie3 = new Movie(3, "Movie 3", "Director 3", 1992, 9, true);
+
+        moviesList.add(movie1);
+        moviesList.add(movie2);
+        moviesList.add(movie3);
     }
 
     @Test
@@ -100,5 +111,16 @@ public class LibraryManagerTest {
 
         //someone tries to returns a book that is already returned
         assertFalse(libraryManager.returnBook(3, booksList));
+    }
+
+    //Movies tests
+    @Test
+    public void successfulCheckoutMovieTest() {
+        assertTrue(libraryManager.checkoutMovie(1, moviesList));
+    }
+
+    @Test
+    public void failedCheckoutMovieTest() {
+        assertFalse(libraryManager.checkoutMovie(13, moviesList));
     }
 }

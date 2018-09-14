@@ -1,12 +1,12 @@
 package com.twu.biblioteca.utils;
 
 import com.twu.biblioteca.dto.Book;
+import com.twu.biblioteca.dto.Movie;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BibliotecaUtils {
-
 
     public List<Book> fillBooksList() {
         List<Book> booksList = new ArrayList<Book>();
@@ -21,5 +21,20 @@ public class BibliotecaUtils {
         booksList.add(book4);
 
         return booksList;
+    }
+
+    public List<Movie> fillMovieList() {
+        List<Movie> moviesList = new ArrayList<Movie>();
+        Movie movie1 = new Movie(1, "Movie 1", "Director 1 ", 1990, 0,false);
+        Movie movie2 = new Movie(2, "Movie 2", "Director 2", 1991, 4, false);
+        Movie movie3 = new Movie(3, "Movie 3", "Director 3", 1992, 9, false);
+        Movie movie4 = new Movie(3, "Movie 3", "Director 3", 1992, 10, false);
+
+        moviesList.add(movie1);
+        moviesList.add(movie2);
+        moviesList.add(movie3);
+        moviesList.add(movie4);
+
+        return moviesList;
     }
 }

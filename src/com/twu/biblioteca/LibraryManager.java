@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.dto.Book;
+import com.twu.biblioteca.dto.Movie;
 
 import java.util.List;
 
@@ -30,5 +31,9 @@ public class LibraryManager {
             }
         }
         return false;
+    }
+
+    public Boolean checkoutMovie(int i, List<Movie> moviesList) {
+        return null;
     }
 }
