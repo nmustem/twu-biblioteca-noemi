@@ -44,6 +44,11 @@ public class LibraryManager {
     }
 
     public Boolean returnMovie(int movieId, List<Movie> moviesList) {
-        return null;
+        for (Movie movie : moviesList) {
+            if (movieId == movie.getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
