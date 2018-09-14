@@ -42,4 +42,8 @@ public class LibraryManager {
         }
         return false;
     }
+
+    public Boolean returnMovie(int movieId, List<Movie> moviesList) {
+        return null;
+    }
 }

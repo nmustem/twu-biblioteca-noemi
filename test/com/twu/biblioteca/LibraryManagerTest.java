@@ -148,4 +148,14 @@ public class LibraryManagerTest {
         //someone tries to rent a movie that is already rented
         assertFalse(libraryManager.checkoutMovie(3, moviesList));
     }
+
+    @Test
+    public void successfulReturnMovieTest() {
+        assertTrue(libraryManager.returnMovie(3, moviesList));
+    }
+
+    @Test
+    public void failedReturnMovieTest() {
+        assertFalse(libraryManager.returnMovie(13, moviesList));
+    }
 }
