@@ -46,6 +46,7 @@ public class LibraryManager {
     public Boolean returnMovie(int movieId, List<Movie> moviesList) {
         for (Movie movie : moviesList) {
             if (movieId == movie.getId()) {
+                movie.setRented(false);
                 return true;
             }
         }
