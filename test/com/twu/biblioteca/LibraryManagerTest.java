@@ -158,4 +158,23 @@ public class LibraryManagerTest {
     public void failedReturnMovieTest() {
         assertFalse(libraryManager.returnMovie(13, moviesList));
     }
+
+    @Test
+    public void successfulReturnMovieTest_MovieIsReturned() {
+        libraryManager.returnMovie(3, moviesList);
+
+        assertFalse(moviesList.get(2).isRented());
+    }
+
+    @Test
+    public void failedReturnMovieTest_checksTheListElements() {
+        List<Movie> booksListBackup = new ArrayList<Movie>();
+        for (Movie movie : moviesList) {
+            booksListBackup.add(new Movie(movie.getId(), movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating(), movie.isRented()));
+        }
+
+        libraryManager.returnMovie(13, moviesList);
+
+        assertEquals(moviesList, booksListBackup);
+    }
 }
