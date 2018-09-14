@@ -142,4 +142,10 @@ public class LibraryManagerTest {
 
         assertEquals(moviesList, moviesListBackup);
     }
+
+    @Test
+    public void failedCheckoutMovieTest_movieIsAlreadyRented() {
+        //someone tries to rent a movie that is already rented
+        assertFalse(libraryManager.checkoutMovie(3, moviesList));
+    }
 }
