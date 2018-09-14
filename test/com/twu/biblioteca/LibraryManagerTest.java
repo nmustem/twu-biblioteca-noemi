@@ -177,4 +177,10 @@ public class LibraryManagerTest {
 
         assertEquals(moviesList, booksListBackup);
     }
+
+    @Test
+    public void failedReturnMovieTest_movieIsAlreadyRented() {
+        //someone tries to returns a movie that is already returned
+        assertFalse(libraryManager.returnMovie(1, moviesList));
+    }
 }
