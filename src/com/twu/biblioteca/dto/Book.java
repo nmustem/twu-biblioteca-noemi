@@ -64,8 +64,8 @@ public class Book {
 
     @Override
     public String toString() {
-        return String.format("| %5s | %-30s | %-30s | %4s | %5s |",
-                id, title.length() > 30 ? title.substring(0, 27) + "..." : title, author.length() > 30 ? author.substring(0, 27) + "..." : author, year, rented);
+        return String.format("| %5s | %-30s | %-30s | %4s |",
+                id, title.length() > 30 ? title.substring(0, 27) + "..." : title, author.length() > 30 ? author.substring(0, 27) + "..." : author, year);
     }
 
     @Override

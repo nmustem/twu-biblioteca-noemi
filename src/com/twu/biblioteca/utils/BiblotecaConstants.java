@@ -32,6 +32,19 @@ public interface BiblotecaConstants {
         }
     };
 
+    public static String CONTINUE_MESSAGE = "Do you want to do something else?";
+
+    public static List<String> CONTINUE_OPTIONS = new ArrayList<String>() {
+        {
+            add("y - Yes. Show me the menu again, please");
+            add("n - No. That's all, quit.");
+        }
+    };
+
+    public static String YES = "Y";
+
+    public static String NO = "N";
+
     public static String BOOKS_LIST = "__BOOKS LIST__";
 
     public static String CHECKOUT_BOOK = "__CHECKOUT BOOK__";
@@ -44,7 +57,13 @@ public interface BiblotecaConstants {
 
     public static String INVALID_NUMBER = "\"%s\" is not a valid number. Enter again please: ";
 
-    public static String BOOKS_LIST_HEADER = String.format("| %5s | %-30s | %-30s | %4s | %5s|", "Id", "Title", "Author", "Year", "Rented");
+    public static String INVALID_OPTION = "\"%s\" is not a valid option. Enter again please: ";
 
-    public static String SEPARATOR = "------------------------------------------------------------------------------------------";
+    public static String BOOKS_LIST_HEADER = String.format("| %5s | %-30s | %-30s | %4s |", "Id", "Title", "Author", "Year");
+
+    public static String SEPARATOR = "----------------------------------------------------------------------------------";
+
+    //public static String BOOKS_LIST_HEADER = String.format("| %5s | %-30s | %-30s | %4s | %5s|", "Id", "Title", "Author", "Year", "Rented");
+
+    //public static String SEPARATOR = "------------------------------------------------------------------------------------------";
 }
