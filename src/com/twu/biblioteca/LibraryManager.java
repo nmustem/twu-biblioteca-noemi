@@ -33,7 +33,12 @@ public class LibraryManager {
         return false;
     }
 
-    public Boolean checkoutMovie(int i, List<Movie> moviesList) {
-        return null;
+    public Boolean checkoutMovie(int movieId, List<Movie> moviesList) {
+        for (Movie movie : moviesList) {
+            if (movieId == movie.getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
