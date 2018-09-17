@@ -17,6 +17,7 @@ public class LibraryManagerTest {
     private  List<Book> booksList;
     private  List<Movie> moviesList;
     User userLogged = new User("123-4567", "password", "User 1", "Surname 1", "123-4567@biblioteca.com", 123456789);
+    User otherUser = new User("222-2222", "pass", "User 222", "Surname 222", "222-2222@biblioteca.com", 222222222);
 
     @Before
     public void fillTheBooksList() {
@@ -204,13 +205,35 @@ public class LibraryManagerTest {
 
     @Test
     public void successfulReturnBookTest_rentedByUser() {
-        libraryManager.returnProduct(booksList.get(0).getId(), booksList, userLogged);
-        assertEquals(booksList.get(0).getRentedByUser(), null);
+        libraryManager.returnProduct(booksList.get(2).getId(), booksList, userLogged);
+        assertEquals(booksList.get(2).getRentedByUser(), null);
     }
 
     @Test
     public void successfulReturnMovieTest_rentedByUser() {
-        libraryManager.returnProduct(moviesList.get(0).getId(), moviesList, userLogged);
-        assertEquals(moviesList.get(0).getRentedByUser(), null);
+        libraryManager.returnProduct(moviesList.get(2).getId(), moviesList, userLogged);
+        assertEquals(moviesList.get(2).getRentedByUser(), null);
+    }
+
+    @Test
+    public void unsuccessfulReturnBookTest_rentedByOtherUser() {
+        assertFalse(libraryManager.returnProduct(booksList.get(2).getId(), booksList, otherUser));
+    }
+
+    @Test
+    public void unsuccessfulReturnMovieTest_rentedByOtherUser() {
+        assertFalse(libraryManager.returnProduct(moviesList.get(2).getId(), moviesList, otherUser));
+    }
+
+    @Test
+    public void unsuccessfulReturnBookTest_rentedByOtherUser_checksUserFlag() {
+        libraryManager.returnProduct(booksList.get(2).getId(), booksList, otherUser);
+        assertEquals(booksList.get(2).getRentedByUser(), userLogged);
+    }
+
+    @Test
+    public void unsuccessfulReturnMovieTest_rentedByOtherUser_checksUserFlag() {
+        libraryManager.returnProduct(moviesList.get(2).getId(), moviesList, otherUser);
+        assertEquals(moviesList.get(2).getRentedByUser(), userLogged);
     }
 }

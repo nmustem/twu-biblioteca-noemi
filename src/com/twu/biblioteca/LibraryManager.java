@@ -35,8 +35,10 @@ public class LibraryManager {
             if (productId == libraryProduct.getId() && libraryProduct.isRented()) {
                 if(libraryProduct instanceof Book){
                     ((Book) libraryProduct).setRented(false);
+                    ((Book) libraryProduct).setRentedByUser(null);
                 }else if(libraryProduct instanceof Movie){
                     ((Movie) libraryProduct).setRented(false);
+                    ((Movie) libraryProduct).setRentedByUser(null);
                 }
                 return true;
             }
