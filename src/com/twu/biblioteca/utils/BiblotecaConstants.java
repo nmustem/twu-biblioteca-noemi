@@ -100,4 +100,13 @@ public interface BiblotecaConstants {
             add(new User("444-444", "pass4", "User 4", "Surname 4", "444-444@biblioteca.com", 444444444));
         }
     };
+
+    public static String LOGIN_MESSAGE = "Log in, please.";
+
+    public static String USERNAME = "Username: ";
+
+    public static String PASSWORD = "Password: ";
+
+    public static String WRONG_CREDENTIALS = "Sorry, the username or password is wrong.";
+
 }

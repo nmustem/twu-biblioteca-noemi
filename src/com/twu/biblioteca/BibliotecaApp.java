@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.dto.Book;
 import com.twu.biblioteca.dto.LibraryProduct;
 import com.twu.biblioteca.dto.Movie;
+import com.twu.biblioteca.dto.User;
 import com.twu.biblioteca.utils.BibliotecaUtils;
 import com.twu.biblioteca.utils.BiblotecaConstants;
 
@@ -15,9 +16,12 @@ public class BibliotecaApp {
     private static List<Book> booksList = bibliotecaUtils.fillBooksList();
     private static List<Movie> moviesList = bibliotecaUtils.fillMovieList();
     private static LibraryManager libraryManager = new LibraryManager();
+    private static SessionManager sessionManager = new SessionManager();
+    private static User userLoged;
 
     public static void main(String[] args) {
         welcome();
+        login();
         manageUserActions(showMainMenu());
     }
 
@@ -25,11 +29,32 @@ public class BibliotecaApp {
         System.out.println(BiblotecaConstants.WELCOME_MESSAGE + "\n");
     }
 
+    private static void login() {
+        Scanner scanner = new Scanner(System.in);
+        String username = null;
+        String password = null;
+
+        System.out.println(BiblotecaConstants.LOGIN_MESSAGE);
+
+        do {
+            if(username != null){
+                System.out.println(BiblotecaConstants.WRONG_CREDENTIALS);
+            }
+            System.out.println(BiblotecaConstants.USERNAME);
+            username = scanner.next();
+
+            System.out.println(BiblotecaConstants.PASSWORD);
+            password = scanner.next();
+        }
+        while (!sessionManager.login(username, password));
+        // FIXME , recover the user loged data
+    }
+
     private static Integer showMainMenu() {
         Scanner scanner = new Scanner(System.in);
         int optionChosen;
 
-        System.out.println(BiblotecaConstants.WHAT_TO_DO);
+        System.out.println("\n" + BiblotecaConstants.WHAT_TO_DO);
         for (String option : BiblotecaConstants.MENU_OPTIONS) {
             System.out.println("\t " + option);
         }
