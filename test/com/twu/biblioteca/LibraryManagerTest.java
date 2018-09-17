@@ -2,6 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.dto.Book;
 import com.twu.biblioteca.dto.Movie;
+import com.twu.biblioteca.dto.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,6 +16,7 @@ public class LibraryManagerTest {
     private LibraryManager libraryManager = new LibraryManager();
     private  List<Book> booksList;
     private  List<Movie> moviesList;
+    User userLogged = new User("123-4567", "password", "User 1", "Surname 1", "123-4567@biblioteca.com", 123456789);
 
     @Before
     public void fillTheBooksList() {
@@ -182,5 +184,17 @@ public class LibraryManagerTest {
     public void failedReturnMovieTest_movieIsAlreadyRented() {
         //someone tries to returns a movie that is already returned
         assertFalse(libraryManager.returnProduct(1, moviesList));
+    }
+
+    @Test
+    public void successfulCheckoutBookTest_rentedByUser() {
+        libraryManager.checkoutProduct(booksList.get(0).getId(), booksList);
+        assertEquals(booksList.get(0).getRentedByUser(), userLogged);
+    }
+
+    @Test
+    public void successfulCheckoutMovieTest_rentedByUser() {
+        libraryManager.checkoutProduct(moviesList.get(0).getId(), booksList);
+        assertEquals(moviesList.get(0).getRentedByUser(), userLogged);
     }
 }

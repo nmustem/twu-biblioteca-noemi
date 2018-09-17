@@ -3,7 +3,6 @@ package com.twu.biblioteca;
 import com.twu.biblioteca.dto.Book;
 import com.twu.biblioteca.dto.LibraryProduct;
 import com.twu.biblioteca.dto.Movie;
-import com.twu.biblioteca.dto.User;
 import com.twu.biblioteca.utils.BibliotecaUtils;
 import com.twu.biblioteca.utils.BiblotecaConstants;
 

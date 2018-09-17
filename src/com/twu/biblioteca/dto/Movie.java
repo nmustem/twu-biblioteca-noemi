@@ -9,12 +9,15 @@ public class Movie extends LibraryProduct{
 
     private int rating; // 0 means unrated
 
+    private User rentedByUser;
+
     public Movie(Integer id, String title, String director, int year, int rating, boolean rented) {
         super(id, rented);
         this.title = title;
         this.director = director;
         this.year = year;
         this.rating = rating;
+        this.rentedByUser = new User();
     }
 
     public Integer getId() {
@@ -55,6 +58,13 @@ public class Movie extends LibraryProduct{
 
     public void setRating(int rating) {
         this.rating = rating;
+    }
+    public User getRentedByUser() {
+        return rentedByUser;
+    }
+
+    public void setRentedByUser(User rentedByUser) {
+        this.rentedByUser = rentedByUser;
     }
 
     @Override
