@@ -194,7 +194,7 @@ public class LibraryManagerTest {
 
     @Test
     public void successfulCheckoutMovieTest_rentedByUser() {
-        libraryManager.checkoutProduct(moviesList.get(0).getId(), booksList);
+        libraryManager.checkoutProduct(moviesList.get(0).getId(), moviesList);
         assertEquals(moviesList.get(0).getRentedByUser(), userLogged);
     }
 }
