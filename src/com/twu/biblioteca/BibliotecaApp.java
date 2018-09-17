@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 import com.twu.biblioteca.dto.Book;
+import com.twu.biblioteca.dto.LibraryProduct;
+import com.twu.biblioteca.dto.Movie;
 import com.twu.biblioteca.utils.BibliotecaUtils;
 import com.twu.biblioteca.utils.BiblotecaConstants;
 
@@ -11,6 +13,7 @@ public class BibliotecaApp {
 
     private static BibliotecaUtils bibliotecaUtils = new BibliotecaUtils();
     private static List<Book> booksList = bibliotecaUtils.fillBooksList();
+    private static List<Movie> moviesList = bibliotecaUtils.fillMovieList();
     private static LibraryManager libraryManager = new LibraryManager();
 
     public static void main(String[] args) {
@@ -43,39 +46,42 @@ public class BibliotecaApp {
         return optionChosen;
     }
 
-    private static void showTheAvailableBooksList() {
-        System.out.println("\n" + BiblotecaConstants.BOOKS_LIST + "\n");
-        System.out.println(BiblotecaConstants.BOOKS_LIST_HEADER);
-        System.out.println(BiblotecaConstants.BOOK_SEPARATOR);
-
-        for (Book book : booksList) {
-            if (!book.isRented()) {
-                System.out.println(book.toString());
-            }
-        }
-        System.out.println(BiblotecaConstants.BOOK_SEPARATOR);
-    }
-
     private static void manageUserActions(Integer integer) {
-        //FIXME new items added to the menu
+        //FIXME new items added to the menu, missing methods implementation
         switch (integer) {
-            case 1:
-                showTheAvailableBooksList();
+            case 1: // List books
+                listSpecificProduct(BiblotecaConstants.BOOKS, BiblotecaConstants.BOOK_SEPARATOR, BiblotecaConstants.BOOKS_LIST_HEADER, booksList);
                 manageUserActions(askToContinue());
                 break;
-            case 2:
-                initTheCheckoutBookProcess();
+            case 2: //Checkout book
+                initTheCheckoutProductProcess(BiblotecaConstants.BOOK.toLowerCase(), booksList);
                 manageUserActions(askToContinue());
                 break;
-            case 3:
-                initTheReturnBookProcess();
+            case 3: //Return book
+                initTheReturnProductProcess(BiblotecaConstants.BOOK.toLowerCase(), booksList);
                 manageUserActions(askToContinue());
                 break;
-            case 4:
+            case 4: //List movies
+                listSpecificProduct(BiblotecaConstants.MOVIES, BiblotecaConstants.MOVIE_SEPARATOR, BiblotecaConstants.MOVIE_LIST_HEADER, moviesList);
+                manageUserActions(askToContinue());
+                break;
+            case 5: //Checkout movie
+                initTheCheckoutProductProcess(BiblotecaConstants.MOVIE.toLowerCase(), moviesList);
+                manageUserActions(askToContinue());
+                break;
+            case 6: //Return movie
+                initTheReturnProductProcess(BiblotecaConstants.MOVIE.toLowerCase(), moviesList);
+                manageUserActions(askToContinue());
+                break;
+            case 7: //Show user information
+          //      showUserInformation();
+                manageUserActions(askToContinue());
+                break;
+            case 8:
             case -1:
                 quit();
                 break;
-            case 5: //FIXME
+            case 0:
                 manageUserActions(showMainMenu());
                 break;
             default:
@@ -98,32 +104,45 @@ public class BibliotecaApp {
         }
         System.out.println();
 
-        return optionChosen.equals(BiblotecaConstants.YES) ? 5 : -1; //FIXME the 5 return value
+        return optionChosen.equals(BiblotecaConstants.YES) ? 0 : -1;
     }
 
-    private static void initTheCheckoutBookProcess() {
-        System.out.println("\n" + BiblotecaConstants.CHECKOUT_BOOK + "\n");
+    private static void listSpecificProduct(String productType, String separator, String header, List<? extends LibraryProduct> productsList) {
+        System.out.printf("\n" + BiblotecaConstants.PRODUCTS_LIST + "\n\n", productType.toUpperCase());
+        System.out.println(header);
+        System.out.println(separator);
 
-        if (libraryManager.checkoutProduct(askBookId(), booksList)) {
-            System.out.println(BiblotecaConstants.ENJOY_BOOK_MESSAGE + "\n");
+        for (LibraryProduct libraryProduct : productsList) {
+            if (!libraryProduct.isRented()) {
+                System.out.println(libraryProduct.toString());
+            }
+        }
+        System.out.println(separator);
+    }
+
+    private static void initTheCheckoutProductProcess(String productType, List<? extends LibraryProduct> productsList) {
+        System.out.printf("\n" + BiblotecaConstants.CHECKOUT_PRODUCT + "\n\n", productType.toUpperCase()+ "S");
+
+        if (libraryManager.checkoutProduct(askProductId(productType), productsList)) {
+            System.out.printf(BiblotecaConstants.ENJOY_PRODUCT_MESSAGE + "\n\n", productType);
         } else {
-            System.out.println(BiblotecaConstants.BOOK_NOT_AVAILABLE_MESSAGE + "\n");
+            System.out.printf(BiblotecaConstants.PRODUCT_NOT_AVAILABLE_MESSAGE + "\n\n", productType);
         }
     }
 
-    private static void initTheReturnBookProcess() {
-        System.out.println("\n" + BiblotecaConstants.RETURN_BOOK + "\n");
+    private static void initTheReturnProductProcess(String productType, List<? extends LibraryProduct> productsList) {
+        System.out.printf("\n" + BiblotecaConstants.RETURN_PRODUCT + "\n\n", productType.toUpperCase()+ "S");
 
-        if (libraryManager.returnProduct(askBookId(), booksList)) {
-            System.out.println(BiblotecaConstants.SUCCESSFUL_BOOK_RETURNED_MESSAGE + "\n");
+        if (libraryManager.returnProduct(askProductId(productType), productsList)) {
+            System.out.printf(BiblotecaConstants.SUCCESSFUL_PRODUCT_RETURNED_MESSAGE + "\n\n", productType);
         } else {
-            System.out.println(BiblotecaConstants.INVALID_RETURN_BOOK_MESSAGE + "\n");
+            System.out.printf(BiblotecaConstants.INVALID_RETURN_PRODUCT_MESSAGE + "\n\n", productType);
         }
     }
 
-    private static int askBookId() {
+    private static int askProductId(String productType) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print(BiblotecaConstants.TYPE_BOOK_ID_MESSAGE);
+        System.out.printf(BiblotecaConstants.TYPE_PRODUCT_ID_MESSAGE + "\n\n", productType);
 
         while (!scanner.hasNextInt()) {
             String input = scanner.next();

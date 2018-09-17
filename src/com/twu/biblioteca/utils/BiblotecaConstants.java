@@ -23,7 +23,8 @@ public interface BiblotecaConstants {
             add("4 - List Movies");
             add("5 - Checkout Movie");
             add("6 - Return Movie");
-            add("7 - Quit");
+            add("7 - Show user information");
+            add("8 - Quit");
         }
     };
 
@@ -40,17 +41,13 @@ public interface BiblotecaConstants {
 
     public static String NO = "N";
 
-    public static String BOOKS_LIST = "__BOOKS LIST__";
+    public static String PRODUCTS_LIST = "__%s LIST__";
 
-    public static String CHECKOUT_BOOK = "__CHECKOUT BOOK__";
+    public static String CHECKOUT_PRODUCT = "__CHECKOUT %s__";
 
-    public static String RETURN_BOOK = "__RETURN BOOK__";
+    public static String RETURN_PRODUCT = "__RETURN %s__";
 
-    public static String MOVIES_LIST = "__MOVIES LIST__";
-
-    public static String CHECKOUT_MOVIE = "__CHECKOUT MOVIE__";
-
-    public static String RETURN_MOVIE = "__RETURN MOVIE__";
+    public static String USER_INFORMATION = "__USER INFORMATION__";
 
     public static String QUIT = "__QUIT__";
 
@@ -60,37 +57,34 @@ public interface BiblotecaConstants {
 
     public static String INVALID_OPTION = "\"%s\" is not a valid option. Enter again please: ";
 
+    public static String BOOK = "Book";
 
+    public static String BOOKS = "Books";
 
-    //BOOK MESSAGES
-    public static String ENJOY_BOOK_MESSAGE = "Thank you! Enjoy the book.";
+    public static String MOVIE = "Movie";
 
-    public static String BOOK_NOT_AVAILABLE_MESSAGE = "That book is not available.";
+    public static String MOVIES = "Movies";
 
-    public static String SUCCESSFUL_BOOK_RETURNED_MESSAGE = "Thank you for returning the book.";
+    // Product messages
+    public static String ENJOY_PRODUCT_MESSAGE = "Thank you! Enjoy the %s.";
 
-    public static String INVALID_RETURN_BOOK_MESSAGE = "That is not a valid book to return.";
+    public static String PRODUCT_NOT_AVAILABLE_MESSAGE = "That %s is not available.";
 
-    public static String TYPE_BOOK_ID_MESSAGE = "Type the book id: ";
+    public static String SUCCESSFUL_PRODUCT_RETURNED_MESSAGE = "Thank you for returning the %s.";
 
+    public static String INVALID_RETURN_PRODUCT_MESSAGE = "That is not a valid %s to return.";
+
+    public static String TYPE_PRODUCT_ID_MESSAGE = "Type the %s id: ";
+
+    //BOOK messages
     public static String BOOKS_LIST_HEADER = String.format("| %5s | %-30s | %-30s | %4s |", "Id", "Title", "Author", "Year");
 
     public static String BOOK_SEPARATOR = "----------------------------------------------------------------------------------";
 
-    //MOVIE MESSAGES
-    public static String ENJOY_MOVIE_MESSAGE = "Thank you! Enjoy the movie.";
-
-    public static String MOVIE_NOT_AVAILABLE_MESSAGE = "That movie is not available.";
-
-    public static String SUCCESSFUL_MOVIE_RETURNED_MESSAGE = "Thank you for returning the movie.";
-
-    public static String INVALID_RETURN_MOVIE_MESSAGE = "That is not a valid movie to return.";
-
-    public static String TYPE_MOVIE_ID_MESSAGE = "Type the movie id: ";
-
+    //MOVIE messages
     public static String MOVIE_LIST_HEADER = String.format("| %5s | %-30s | %-30s | %4s | %7s |", "Id", "Title", "Director", "Year", "Rating");
 
-    public static String MOVIE_SEPARATOR = "----------------------------------------------------------------------------------";
+    public static String MOVIE_SEPARATOR = "--------------------------------------------------------------------------------------------";
 
     //public static String BOOKS_LIST_HEADER = String.format("| %5s | %-30s | %-30s | %4s | %5s|", "Id", "Title", "Author", "Year", "Rented");
 
