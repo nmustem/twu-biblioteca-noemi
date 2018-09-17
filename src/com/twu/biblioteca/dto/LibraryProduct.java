@@ -5,9 +5,12 @@ public abstract class LibraryProduct {
 
     protected boolean rented;
 
+    private User rentedByUser;
+
     public LibraryProduct(Integer id, boolean rented) {
         this.id = id;
         this.rented = rented;
+        rentedByUser = new User();
     }
 
     public Integer getId() {
@@ -24,5 +27,13 @@ public abstract class LibraryProduct {
 
     public void setRented(boolean rented) {
         this.rented = rented;
+    }
+
+    public User getRentedByUser() {
+        return rentedByUser;
+    }
+
+    public void setRentedByUser(User rentedByUser) {
+        this.rentedByUser = rentedByUser;
     }
 }

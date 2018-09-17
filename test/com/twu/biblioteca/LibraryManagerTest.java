@@ -41,17 +41,17 @@ public class LibraryManagerTest {
 
     @Test
     public void successfulCheckoutBookTest() {
-        assertTrue(libraryManager.checkoutProduct(1, booksList));
+        assertTrue(libraryManager.checkoutProduct(1, booksList, userLogged));
     }
 
     @Test
     public void failedCheckoutBookTest() {
-        assertFalse(libraryManager.checkoutProduct(13, booksList));
+        assertFalse(libraryManager.checkoutProduct(13, booksList, userLogged));
     }
 
     @Test
     public void successfulCheckoutBookTest_BookIsRented() {
-        libraryManager.checkoutProduct(1, booksList);
+        libraryManager.checkoutProduct(1, booksList, userLogged);
 
         assertTrue(booksList.get(0).isRented());
     }
@@ -63,7 +63,7 @@ public class LibraryManagerTest {
             booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), book.isRented()));
         }
 
-        libraryManager.checkoutProduct(13, booksList);
+        libraryManager.checkoutProduct(13, booksList, userLogged);
 
         assertEquals(booksList, booksListBackup);
     }
@@ -71,10 +71,10 @@ public class LibraryManagerTest {
     @Test
     public void failedCheckoutBookTest_bookIsAlreadyRented() {
         //someone rents a book with bookId = 1
-        libraryManager.checkoutProduct(1, booksList);
+        libraryManager.checkoutProduct(1, booksList, userLogged);
 
         //someone tries to rent a book that is already rented
-        assertFalse(libraryManager.checkoutProduct(1, booksList));
+        assertFalse(libraryManager.checkoutProduct(1, booksList, userLogged));
     }
 
     @Test
@@ -118,17 +118,17 @@ public class LibraryManagerTest {
     //Movies tests
     @Test
     public void successfulCheckoutMovieTest() {
-        assertTrue(libraryManager.checkoutProduct(1, moviesList));
+        assertTrue(libraryManager.checkoutProduct(1, moviesList, userLogged));
     }
 
     @Test
     public void failedCheckoutMovieTest() {
-        assertFalse(libraryManager.checkoutProduct(13, moviesList));
+        assertFalse(libraryManager.checkoutProduct(13, moviesList, userLogged));
     }
 
     @Test
     public void successfulCheckoutMovieTest_MovieIsRented() {
-        libraryManager.checkoutProduct(1, moviesList);
+        libraryManager.checkoutProduct(1, moviesList, userLogged);
 
         assertTrue(moviesList.get(0).isRented());
     }
@@ -140,7 +140,7 @@ public class LibraryManagerTest {
             moviesListBackup.add(new Movie(movie.getId(), movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating(), movie.isRented()));
         }
 
-        libraryManager.checkoutProduct(13, moviesList);
+        libraryManager.checkoutProduct(13, moviesList, userLogged);
 
         assertEquals(moviesList, moviesListBackup);
     }
@@ -148,7 +148,7 @@ public class LibraryManagerTest {
     @Test
     public void failedCheckoutMovieTest_movieIsAlreadyRented() {
         //someone tries to rent a movie that is already rented
-        assertFalse(libraryManager.checkoutProduct(3, moviesList));
+        assertFalse(libraryManager.checkoutProduct(3, moviesList, userLogged));
     }
 
     @Test
@@ -188,13 +188,15 @@ public class LibraryManagerTest {
 
     @Test
     public void successfulCheckoutBookTest_rentedByUser() {
-        libraryManager.checkoutProduct(booksList.get(0).getId(), booksList);
+        libraryManager.checkoutProduct(booksList.get(0).getId(), booksList, userLogged);
         assertEquals(booksList.get(0).getRentedByUser(), userLogged);
     }
 
     @Test
     public void successfulCheckoutMovieTest_rentedByUser() {
-        libraryManager.checkoutProduct(moviesList.get(0).getId(), moviesList);
+        libraryManager.checkoutProduct(moviesList.get(0).getId(), moviesList, userLogged);
         assertEquals(moviesList.get(0).getRentedByUser(), userLogged);
     }
+
+  
 }

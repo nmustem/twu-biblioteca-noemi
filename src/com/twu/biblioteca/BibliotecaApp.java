@@ -152,7 +152,7 @@ public class BibliotecaApp {
     private static void initTheCheckoutProductProcess(String productType, List<? extends LibraryProduct> productsList) {
         System.out.printf("\n" + BiblotecaConstants.CHECKOUT_PRODUCT + "\n\n", productType.toUpperCase()+ "S");
 
-        if (libraryManager.checkoutProduct(askProductId(productType), productsList)) {
+        if (libraryManager.checkoutProduct(askProductId(productType), productsList, sessionManager.getUserLoged())) {
             System.out.printf(BiblotecaConstants.ENJOY_PRODUCT_MESSAGE + "\n\n", productType);
         } else {
             System.out.printf(BiblotecaConstants.PRODUCT_NOT_AVAILABLE_MESSAGE + "\n\n", productType);

@@ -7,14 +7,11 @@ public class Book extends LibraryProduct{
 
     private int year;
 
-    private User rentedByUser;
-
     public Book(Integer id, String title, String author, int year, boolean rented) {
         super(id, rented);
         this.title = title;
         this.author = author;
         this.year = year;
-        rentedByUser = new User();
     }
 
     public String getTitle() {
@@ -39,14 +36,6 @@ public class Book extends LibraryProduct{
 
     public void setYear(int year) {
         this.year = year;
-    }
-
-    public User getRentedByUser() {
-        return rentedByUser;
-    }
-
-    public void setRentedByUser(User rentedByUser) {
-        this.rentedByUser = rentedByUser;
     }
 
     @Override
