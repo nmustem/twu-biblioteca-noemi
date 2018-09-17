@@ -15,4 +15,9 @@ public class SessionManagerTest {
     public void unsuccessfulLogInTest(){
         assertFalse(sessionManager.login(nonExistingUser.getId(), nonExistingUser.getPassword()));
     }
+
+    @Test
+    public void logInTest(){
+        assertTrue(sessionManager.login(user.getId(), user.getPassword()));
+    }
 }
