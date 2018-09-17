@@ -16,8 +16,8 @@ public class LibraryManagerTest {
     private LibraryManager libraryManager = new LibraryManager();
     private  List<Book> booksList;
     private  List<Movie> moviesList;
-    User userLogged = new User("123-4567", "password", "User 1", "Surname 1", "123-4567@biblioteca.com", 123456789);
-    User otherUser = new User("222-2222", "pass", "User 222", "Surname 222", "222-2222@biblioteca.com", 222222222);
+    private User userLogged = new User("123-4567", "password", "User 1", "Surname 1", "123-4567@biblioteca.com", 123456789);
+    private User otherUser = new User("222-2222", "pass", "User 222", "Surname 222", "222-2222@biblioteca.com", 222222222);
 
     @Before
     public void fillTheBooksList() {
@@ -206,13 +206,13 @@ public class LibraryManagerTest {
     @Test
     public void successfulReturnBookTest_rentedByUser() {
         libraryManager.returnProduct(booksList.get(2).getId(), booksList, userLogged);
-        assertEquals(booksList.get(2).getRentedByUser(), null);
+        assertNull(booksList.get(2).getRentedByUser());
     }
 
     @Test
     public void successfulReturnMovieTest_rentedByUser() {
         libraryManager.returnProduct(moviesList.get(2).getId(), moviesList, userLogged);
-        assertEquals(moviesList.get(2).getRentedByUser(), null);
+        assertNull(moviesList.get(2).getRentedByUser());
     }
 
     @Test

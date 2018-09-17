@@ -32,7 +32,7 @@ public class LibraryManager {
 
     public Boolean returnProduct(int productId, List<? extends LibraryProduct> productsList, User user) {
         for (LibraryProduct libraryProduct : productsList) {
-            if (productId == libraryProduct.getId() && libraryProduct.isRented()) {
+            if (productId == libraryProduct.getId() && libraryProduct.isRented() && libraryProduct.getRentedByUser().equals(user)) {
                 if(libraryProduct instanceof Book){
                     ((Book) libraryProduct).setRented(false);
                     ((Book) libraryProduct).setRentedByUser(null);
