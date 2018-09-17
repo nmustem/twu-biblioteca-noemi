@@ -33,5 +33,10 @@ public class SessionManagerTest {
         assertEquals(sessionManager.getUserLoged(), user);
     }
 
+    @Test
+    public void unsuccessfulLoginTest_recoverUser(){
+        sessionManager.login(nonExistingUser.getId(), "wrongPASS");
+        assertEquals(sessionManager.getUserLoged().getId(), null);
+    }
 
 }
