@@ -96,8 +96,8 @@ public interface BiblotecaConstants {
     //User credentials
     public static List<User> BIBLOTECA_USERS = new ArrayList<User>() {
         {
-            add(new User("123-456", "password", "User 1", "Surname 1", "123-456@biblioteca.com", 123456789));
-            add(new User("444-444", "pass4", "User 4", "Surname 4", "444-444@biblioteca.com", 444444444));
+            add(new User("123-4567", "password", "User 1", "Surname 1", "123-4567@biblioteca.com", 123456789));
+            add(new User("444-4444", "pass4", "User 4", "Surname 4", "444-4444@biblioteca.com", 444444444));
         }
     };
 
@@ -108,5 +108,8 @@ public interface BiblotecaConstants {
     public static String PASSWORD = "Password: ";
 
     public static String WRONG_CREDENTIALS = "Sorry, the username or password is wrong.";
+
+    public static String USER_INFORMATION_HEADER = String.format("| %8s | %-30s | %-23s | %-9s |", "Username", "Name", "Email", "Phone");
+    public static String USER_SEPARATOR = "-----------------------------------------------------------------------------------";
 
 }

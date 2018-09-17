@@ -81,6 +81,12 @@ public class User {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
         return this.id.equals(user.id) &&
-               this.password.equals(user.password);
+                this.password.equals(user.password);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("| %8s | %-30s | %-23s | %9s |",
+                id, (name + " " + surnames).length() > 30 ? (name + " " + surnames).substring(0, 27) + "..." : (name + " " + surnames), email, phone);
     }
 }

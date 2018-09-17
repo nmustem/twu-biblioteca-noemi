@@ -17,7 +17,6 @@ public class BibliotecaApp {
     private static List<Movie> moviesList = bibliotecaUtils.fillMovieList();
     private static LibraryManager libraryManager = new LibraryManager();
     private static SessionManager sessionManager = new SessionManager();
-    private static User userLoged;
 
     public static void main(String[] args) {
         welcome();
@@ -47,7 +46,6 @@ public class BibliotecaApp {
             password = scanner.next();
         }
         while (!sessionManager.login(username, password));
-        // FIXME , recover the user loged data
     }
 
     private static Integer showMainMenu() {
@@ -72,7 +70,6 @@ public class BibliotecaApp {
     }
 
     private static void manageUserActions(Integer integer) {
-        //FIXME new items added to the menu, missing methods implementation
         switch (integer) {
             case 1: // List books
                 listSpecificProduct(BiblotecaConstants.BOOKS, BiblotecaConstants.BOOK_SEPARATOR, BiblotecaConstants.BOOKS_LIST_HEADER, booksList);
@@ -99,19 +96,27 @@ public class BibliotecaApp {
                 manageUserActions(askToContinue());
                 break;
             case 7: //Show user information
-          //      showUserInformation();
+                showUserInformation();
                 manageUserActions(askToContinue());
                 break;
-            case 8:
+            case 8: //Quit
             case -1:
                 quit();
                 break;
-            case 0:
+            case 0: // Yes. Continue
                 manageUserActions(showMainMenu());
                 break;
             default:
                 break;
         }
+    }
+
+    private static void showUserInformation() {
+        System.out.printf("\n" + BiblotecaConstants.USER_INFORMATION + "\n\n");
+        System.out.println(BiblotecaConstants.USER_INFORMATION_HEADER);
+        System.out.println(BiblotecaConstants.USER_SEPARATOR);
+
+        System.out.println(sessionManager.getUserLoged().toString());
     }
 
     private static int askToContinue() {
