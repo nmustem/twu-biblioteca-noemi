@@ -162,7 +162,7 @@ public class BibliotecaApp {
     private static void initTheReturnProductProcess(String productType, List<? extends LibraryProduct> productsList) {
         System.out.printf("\n" + BiblotecaConstants.RETURN_PRODUCT + "\n\n", productType.toUpperCase()+ "S");
 
-        if (libraryManager.returnProduct(askProductId(productType), productsList)) {
+        if (libraryManager.returnProduct(askProductId(productType), productsList, sessionManager.getUserLoged())) {
             System.out.printf(BiblotecaConstants.SUCCESSFUL_PRODUCT_RETURNED_MESSAGE + "\n\n", productType);
         } else {
             System.out.printf(BiblotecaConstants.INVALID_RETURN_PRODUCT_MESSAGE + "\n\n", productType);

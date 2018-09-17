@@ -30,7 +30,7 @@ public class LibraryManager {
         return false;
     }
 
-    public Boolean returnProduct(int productId, List<? extends LibraryProduct> productsList) {
+    public Boolean returnProduct(int productId, List<? extends LibraryProduct> productsList, User user) {
         for (LibraryProduct libraryProduct : productsList) {
             if (productId == libraryProduct.getId() && libraryProduct.isRented()) {
                 if(libraryProduct instanceof Book){
