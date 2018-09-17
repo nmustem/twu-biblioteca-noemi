@@ -12,12 +12,17 @@ public class SessionManagerTest {
     SessionManager sessionManager = new SessionManager();
 
     @Test
-    public void unsuccessfulLogInTest(){
+    public void unsuccessfulLoginTest(){
         assertFalse(sessionManager.login(nonExistingUser.getId(), nonExistingUser.getPassword()));
     }
 
     @Test
-    public void logInTest(){
+    public void loginTest(){
         assertTrue(sessionManager.login(user.getId(), user.getPassword()));
+    }
+
+    @Test
+    public void unsuccessfulLoginTest_wrongPasswd(){
+        assertFalse(sessionManager.login(nonExistingUser.getId(), nonExistingUser.getPassword() + "pass"));
     }
 }

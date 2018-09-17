@@ -1,5 +1,7 @@
 package com.twu.biblioteca.utils;
 
+import com.twu.biblioteca.dto.User;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,4 +91,13 @@ public interface BiblotecaConstants {
     //public static String BOOKS_LIST_HEADER = String.format("| %5s | %-30s | %-30s | %4s | %5s|", "Id", "Title", "Author", "Year", "Rented");
 
     //public static String SEPARATOR = "------------------------------------------------------------------------------------------";
+
+
+    //User credentials
+    public static List<User> BIBLOTECA_USERS = new ArrayList<User>() {
+        {
+            add(new User("123-456", "password", "User 1", "Surname 1", "123-456@biblioteca.com", 123456789));
+            add(new User("444-444", "pass4", "User 4", "Surname 4", "444-444@biblioteca.com", 444444444));
+        }
+    };
 }
