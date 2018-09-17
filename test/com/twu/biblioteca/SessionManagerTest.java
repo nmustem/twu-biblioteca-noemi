@@ -13,6 +13,6 @@ public class SessionManagerTest {
 
     @Test
     public void unsuccessfulLogInTest(){
-        assertFalse(sessionManager.nonExistingUser(user.getId(), user.getPassword()));
+        assertFalse(sessionManager.login(nonExistingUser.getId(), nonExistingUser.getPassword()));
     }
 }
