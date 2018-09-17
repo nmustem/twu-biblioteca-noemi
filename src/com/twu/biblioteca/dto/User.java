@@ -14,6 +14,10 @@ public class User {
 
     private int phone;
 
+    public User() {
+
+    }
+
     public User(String id, String password, String name, String surnames, String email, int phone) {
         this.id = id;
         this.password = password;

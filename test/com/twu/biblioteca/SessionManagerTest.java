@@ -11,6 +11,7 @@ public class SessionManagerTest {
 
     SessionManager sessionManager = new SessionManager();
 
+
     @Test
     public void unsuccessfulLoginTest(){
         assertFalse(sessionManager.login(nonExistingUser.getId(), nonExistingUser.getPassword()));
@@ -25,4 +26,12 @@ public class SessionManagerTest {
     public void unsuccessfulLoginTest_wrongPasswd(){
         assertFalse(sessionManager.login(nonExistingUser.getId(), nonExistingUser.getPassword() + "pass"));
     }
+
+    @Test
+    public void loginTest_recoverUser(){
+        sessionManager.login(user.getId(), user.getPassword());
+        assertEquals(sessionManager.getUserLoged(), user);
+    }
+
+
 }

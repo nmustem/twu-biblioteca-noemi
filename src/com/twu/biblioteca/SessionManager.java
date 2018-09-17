@@ -4,6 +4,7 @@ import com.twu.biblioteca.dto.User;
 import com.twu.biblioteca.utils.BiblotecaConstants;
 
 public class SessionManager {
+    private User userLoged;
 
     public SessionManager() {
     }
@@ -15,5 +16,13 @@ public class SessionManager {
             }
         }
         return false;
+    }
+
+    public User getUserLoged() {
+        return userLoged;
+    }
+
+    public void setUserLoged(User userLoged) {
+        this.userLoged = userLoged;
     }
 }
