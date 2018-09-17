@@ -9,8 +9,8 @@ public class Movie extends LibraryProduct{
 
     private int rating; // 0 means unrated
 
-    public Movie(Integer id, String title, String director, int year, int rating, boolean rented) {
-        super(id, rented);
+    public Movie(Integer id, String title, String director, int year, int rating) {
+        super(id);
         this.title = title;
         this.director = director;
         this.year = year;
@@ -69,7 +69,6 @@ public class Movie extends LibraryProduct{
         if (o == null || getClass() != o.getClass()) return false;
         Movie movie = (Movie) o;
         return year == movie.year &&
-                rented == movie.rented &&
                 rating == movie.rating &&
                 id.equals(movie.id) &&
                 title.equals(movie.title) &&

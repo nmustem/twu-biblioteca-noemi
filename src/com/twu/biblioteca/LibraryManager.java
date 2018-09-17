@@ -18,10 +18,8 @@ public class LibraryManager {
         for (LibraryProduct libraryProduct : productsList) {
             if (productId == libraryProduct.getId() && !libraryProduct.isRented()) {
                 if(libraryProduct instanceof Book){
-                    ((Book) libraryProduct).setRented(true);
                     ((Book) libraryProduct).setRentedByUser(user);
                 }else if(libraryProduct instanceof Movie){
-                    ((Movie) libraryProduct).setRented(true);
                     ((Movie) libraryProduct).setRentedByUser(user);
                 }
                 return true;
@@ -34,10 +32,8 @@ public class LibraryManager {
         for (LibraryProduct libraryProduct : productsList) {
             if (productId == libraryProduct.getId() && libraryProduct.isRented() && libraryProduct.getRentedByUser().equals(user)) {
                 if(libraryProduct instanceof Book){
-                    ((Book) libraryProduct).setRented(false);
                     ((Book) libraryProduct).setRentedByUser(null);
                 }else if(libraryProduct instanceof Movie){
-                    ((Movie) libraryProduct).setRented(false);
                     ((Movie) libraryProduct).setRentedByUser(null);
                 }
                 return true;

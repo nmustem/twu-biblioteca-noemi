@@ -12,4 +12,9 @@ public class BibliotecaUtilsTest {
         assertFalse(bibliotecaUtils.fillBooksList().isEmpty());
     }
 
+    @Test
+    public void fillMoviesListTest() {
+        assertFalse(bibliotecaUtils.fillMovieList().isEmpty());
+    }
+
 }

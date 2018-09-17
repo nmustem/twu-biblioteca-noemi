@@ -3,14 +3,10 @@ package com.twu.biblioteca.dto;
 public abstract class LibraryProduct {
     protected Integer id;
 
-    protected boolean rented;
+    private User rentedByUser = null;
 
-    private User rentedByUser;
-
-    public LibraryProduct(Integer id, boolean rented) {
+    public LibraryProduct(Integer id) {
         this.id = id;
-        this.rented = rented;
-        rentedByUser = new User();
     }
 
     public Integer getId() {
@@ -22,11 +18,7 @@ public abstract class LibraryProduct {
     }
 
     public boolean isRented() {
-        return rented;
-    }
-
-    public void setRented(boolean rented) {
-        this.rented = rented;
+        return rentedByUser != null;
     }
 
     public User getRentedByUser() {

@@ -7,8 +7,8 @@ public class Book extends LibraryProduct{
 
     private int year;
 
-    public Book(Integer id, String title, String author, int year, boolean rented) {
-        super(id, rented);
+    public Book(Integer id, String title, String author, int year) {
+        super(id);
         this.title = title;
         this.author = author;
         this.year = year;
@@ -50,7 +50,6 @@ public class Book extends LibraryProduct{
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
         return year == book.year &&
-                rented == book.rented &&
                 id.equals(book.id) &&
                 title.equals(book.title) &&
                 author.equals(book.author);

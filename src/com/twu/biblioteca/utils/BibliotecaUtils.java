@@ -10,10 +10,10 @@ public class BibliotecaUtils {
 
     public List<Book> fillBooksList() {
         List<Book> booksList = new ArrayList<Book>();
-        Book book1 = new Book(1, "Book 1", "Autor1", 1990, false);
-        Book book2 = new Book(2, "Book 2", "Autor2", 1991, false);
-        Book book3 = new Book(3, "Book 3", "Autor3", 1992, false);
-        Book book4 = new Book(4, "Book 4", "Autor4", 1993, false);
+        Book book1 = new Book(1, "Book 1", "Autor1", 1990);
+        Book book2 = new Book(2, "Book 2", "Autor2", 1991);
+        Book book3 = new Book(3, "Book 3", "Autor3", 1992);
+        Book book4 = new Book(4, "Book 4", "Autor4", 1993);
 
         booksList.add(book1);
         booksList.add(book2);
@@ -25,10 +25,10 @@ public class BibliotecaUtils {
 
     public List<Movie> fillMovieList() {
         List<Movie> moviesList = new ArrayList<Movie>();
-        Movie movie1 = new Movie(1, "Movie 1", "Director 1 ", 1990, 0,false);
-        Movie movie2 = new Movie(2, "Movie 2", "Director 2", 1991, 4, false);
-        Movie movie3 = new Movie(3, "Movie 3", "Director 3", 1992, 9, false);
-        Movie movie4 = new Movie(3, "Movie 3", "Director 3", 1992, 10, false);
+        Movie movie1 = new Movie(1, "Movie 1", "Director 1 ", 1990, 0);
+        Movie movie2 = new Movie(2, "Movie 2", "Director 2", 1991, 4);
+        Movie movie3 = new Movie(3, "Movie 3", "Director 3", 1992, 9);
+        Movie movie4 = new Movie(3, "Movie 3", "Director 3", 1992, 10);
 
         moviesList.add(movie1);
         moviesList.add(movie2);

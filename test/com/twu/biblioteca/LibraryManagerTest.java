@@ -22,9 +22,9 @@ public class LibraryManagerTest {
     @Before
     public void fillTheBooksList() {
         this.booksList = new ArrayList<Book>();
-        Book book1 = new Book(1, "Book 1", "Autor1", 1990, false);
-        Book book2 = new Book(2, "Book 2", "Autor2", 1991, false);
-        Book book3 = new Book(3, "Book 3", "Autor3", 1992, true);
+        Book book1 = new Book(1, "Book 1", "Autor1", 1990);
+        Book book2 = new Book(2, "Book 2", "Autor2", 1991);
+        Book book3 = new Book(3, "Book 3", "Autor3", 1992);
 
         book3.setRentedByUser(userLogged);
 
@@ -33,9 +33,9 @@ public class LibraryManagerTest {
         booksList.add(book3);
 
         this.moviesList = new ArrayList<Movie>();
-        Movie movie1 = new Movie(1, "Movie 1", "Director 1 ", 1990, 0,false);
-        Movie movie2 = new Movie(2, "Movie 2", "Director 2", 1991, 4, false);
-        Movie movie3 = new Movie(3, "Movie 3", "Director 3", 1992, 9, true);
+        Movie movie1 = new Movie(1, "Movie 1", "Director 1 ", 1990, 0);
+        Movie movie2 = new Movie(2, "Movie 2", "Director 2", 1991, 4);
+        Movie movie3 = new Movie(3, "Movie 3", "Director 3", 1992, 9);
 
         movie3.setRentedByUser(userLogged);
 
@@ -65,7 +65,7 @@ public class LibraryManagerTest {
     public void failedCheckoutBookTest_checksTheListElements() {
         List<Book> booksListBackup = new ArrayList<Book>();
         for (Book book : booksList) {
-            booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), book.isRented()));
+            booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear()));
         }
 
         libraryManager.checkoutProduct(13, booksList, userLogged);
@@ -103,7 +103,7 @@ public class LibraryManagerTest {
     public void failedReturnBookTest_checksTheListElements() {
         List<Book> booksListBackup = new ArrayList<Book>();
         for (Book book : booksList) {
-            booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear(), book.isRented()));
+            booksListBackup.add(new Book(book.getId(), book.getTitle(), book.getAuthor(), book.getYear()));
         }
 
         libraryManager.returnProduct(13, booksList, userLogged);
@@ -142,7 +142,7 @@ public class LibraryManagerTest {
     public void failedCheckoutMovieTest_checksTheListElements() {
         List<Movie> moviesListBackup = new ArrayList<Movie>();
         for (Movie movie : moviesList) {
-            moviesListBackup.add(new Movie(movie.getId(), movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating(), movie.isRented()));
+            moviesListBackup.add(new Movie(movie.getId(), movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating()));
         }
 
         libraryManager.checkoutProduct(13, moviesList, userLogged);
@@ -177,7 +177,7 @@ public class LibraryManagerTest {
     public void failedReturnMovieTest_checksTheListElements() {
         List<Movie> booksListBackup = new ArrayList<Movie>();
         for (Movie movie : moviesList) {
-            booksListBackup.add(new Movie(movie.getId(), movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating(), movie.isRented()));
+            booksListBackup.add(new Movie(movie.getId(), movie.getTitle(), movie.getDirector(), movie.getYear(), movie.getRating()));
         }
 
         libraryManager.returnProduct(13, moviesList, userLogged);
